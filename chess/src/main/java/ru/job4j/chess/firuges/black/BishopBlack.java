@@ -30,13 +30,13 @@ public class BishopBlack implements Figure {
                     String.format("Could not way by diagonal from %s to %s", source, dest)
             );
         }
-        int size = Math.abs(source.x - dest.x);
+        int size = Math.abs(dest.x - source.x); // 3
         Cell[] steps = new Cell[size];
-        int deltaX = dest.x - source.x;
-        int deltaY = dest.y - source.y;
+        int deltaX = (dest.x - source.x) / size; // -1
+        int deltaY = (dest.y - source.y) / size; // -1
         for (int index = 0; index < size; index++) {
-            int x = source.x + index + 1;
-            int y = source.y + index + 1;
+            int x = source.x + deltaX * index + 1; //
+            int y = source.y + deltaY * index + 1; //
             for (Cell cell : Cell.values()) {
                 if (cell.x == x && cell.y == y) {
                     steps[index] = cell;
