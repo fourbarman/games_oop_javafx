@@ -29,21 +29,19 @@ public class BlackBishopTest {
         Cell expected[] = {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
         assertThat(actual, is(expected));
     }
-    @Test
-    public void wayTestNotDiagonal() {
-        Figure blackBishop = new BishopBlack(Cell.A1);
-        blackBishop.way(Cell.A1, Cell.A2);
-        Cell actual[] = blackBishop.way(Cell.A1, Cell.A2);
-        Cell expected[] = {Cell.A2};
-        assertThat(actual, is(expected));
-    }
 
     @Test
     public void wayTest1() {
-        Figure blackBishop = new BishopBlack(Cell.D4);
-        blackBishop.way(Cell.D4, Cell.A1);
-        Cell actual[] = blackBishop.way(Cell.D4, Cell.A1);
-        Cell expected[] = {Cell.C3, Cell.B2, Cell.A1};
+        Figure blackBishop = new BishopBlack(Cell.C1);
+        blackBishop.way(Cell.C1, Cell.G5);
+        Cell actual[] = blackBishop.way(Cell.C1, Cell.G5);
+        Cell expected[] = {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
         assertThat(actual, is(expected));
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void wayTestNotDiagonal() {
+        Figure blackBishop = new BishopBlack(Cell.A1);
+        blackBishop.way(Cell.A1, Cell.A2);
     }
 }
