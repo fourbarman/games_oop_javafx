@@ -27,9 +27,9 @@ public class Logic {
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            for (int i = 0; i < steps.length; i++) {
-                for (int j = 0; j < figures.length; j++) {
-                    if (steps[i].equals(figures[j].position())) {
+            for (Cell step : steps) {
+                for (Figure figure : figures) {
+                    if (figure != null && step.equals(figure.position())) {
                         isWayClean = false;
                     }
                 }

@@ -30,15 +30,6 @@ public class BlackBishopTest {
         assertThat(actual, is(expected));
     }
 
-    @Test
-    public void wayTest1() {
-        Figure blackBishop = new BishopBlack(Cell.C1);
-        blackBishop.way(Cell.C1, Cell.G5);
-        Cell actual[] = blackBishop.way(Cell.C1, Cell.G5);
-        Cell expected[] = {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
-        assertThat(actual, is(expected));
-    }
-
     @Test(expected = IllegalStateException.class)
     public void wayTestNotDiagonal() {
         Figure blackBishop = new BishopBlack(Cell.A1);
