@@ -22,11 +22,19 @@ public class Logic {
     }
 
     public boolean move(Cell source, Cell dest) {
+        boolean isWayClean = true;
         boolean rst = false;
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
+            for (int i = 0; i < steps.length; i++) {
+                for (int j = 0; j < figures.length; j++) {
+                    if (steps[i].equals(figures[j].position())) {
+                        isWayClean = false;
+                    }
+                }
+            }
+            if (steps.length > 0 && steps[steps.length - 1].equals(dest) && isWayClean) {
                 rst = true;
                 this.figures[index] = this.figures[index].copy(dest);
             }
