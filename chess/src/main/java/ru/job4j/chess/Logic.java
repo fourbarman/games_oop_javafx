@@ -28,10 +28,8 @@ public class Logic {
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
             for (Cell step : steps) {
-                for (Figure figure : figures) {
-                    if (figure != null && step.equals(figure.position())) {
-                        isWayClean = false;
-                    }
+                if (findBy(step) != -1) {
+                    isWayClean = false;
                 }
             }
             if (steps.length > 0 && steps[steps.length - 1].equals(dest) && isWayClean) {
